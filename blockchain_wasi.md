@@ -78,12 +78,12 @@ allow extension for blockchain interaction.
   * `/opt/CHAIN/ADDRESS` SHOULD should be used as the conventional
   location for references to other contracts. Within these directories
   the following files SHOULD be exposed:
-  * `code` - the code at that address, if any.
+  * `code` - The code at that address, if any.
   * `sock` - A file descriptor for cross-contract calls to that address.
   * `balance` - The balance at that address.
 
   The context of the execution is most naturally exposed through the WASI
-  `environ_get` call. This includes context of the exeuction in
+  `environ_get` call. This includes context of the execution in
   a blockchain context, including the gas constraints, the
   initiator of execution, and metadata of the transaction
   initiating the execution. Such metadata SHOULD be exposed as
@@ -119,8 +119,8 @@ allow extension for blockchain interaction.
 
   Directory listing of the `/opt/CHAIN` directory will list 0
   items, since the full namespace cannot meaningfuly be represented.
-  Attempts to `fd_fdstat_set_rights` (change permissions), or
-  `_filestat_set_times` (changing metadata), on blockchain-namespace
+  Attempts to `fd_fdstat_set_rights` (change permissions) or
+  `_filestat_set_times` (change metadata) on blockchain-namespace
   files will be a failure that aborts execution for safety.
 
 5.2 Socket Address and Interoperability
@@ -158,7 +158,7 @@ allow extension for blockchain interaction.
   considered as a chain-defined protocol, similar to IPC messages
   a program would pass to a system logging service. An socket for
   communication to a logging service to ultimately emit externally
-  visible events SHOULD live at `/srv/CHAIN/log.sock` if such a service
+  visible events SHOULD live at `/opt/CHAIN/log.sock` if such a service
   is available. The protocol for submission of logs is left to
   chain-specific implementations.
 
@@ -189,7 +189,7 @@ allow extension for blockchain interaction.
 
 [WADETE] https://github.com/WebAssembly/design/blob/master/Nondeterminism.md
 
-8. Author's Addresses
+8. Authors' Addresses
 
   Nick Hynes
   Oasis Labs
